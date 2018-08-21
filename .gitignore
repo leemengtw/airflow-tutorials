@@ -110,3 +110,6 @@ venv.bak/
 logs
 airflow.db
 unittests.cfg
+
+# Credentials
+data/credentials
