@@ -79,7 +79,7 @@ with DAG('comic_app_v2', default_args=default_args) as dag:
 
     send_notification = SlackAPIPostOperator(
         task_id='send_notification',
-        token="xoxp-30152990274-185860140598-400566770530-9838cd1acbb534418559d7974e4dd01c",
+        token="YOUR_SLACK_TOKEN",
         channel='#comic-notification',
         text="[{{ ds }}] 海賊王有新番了!",
         icon_url='http://airbnb.io/img/projects/airflow3.png'
