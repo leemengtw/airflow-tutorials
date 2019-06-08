@@ -14,7 +14,6 @@ from airflow.operators.latest_only_operator import LatestOnlyOperator
 default_args = {
     'owner': 'Meng Lee',
     'start_date': datetime(2100, 1, 1, 0, 0),
-    'schedule_interval': '@daily',
     'retries': 2,
     'retry_delay': timedelta(minutes=1)
 }
@@ -120,7 +119,7 @@ def get_message_text():
     return message
 
 
-with DAG('comic_app_v3', default_args=default_args) as dag:
+with DAG('comic_app_v3', default_args=default_args, schedule_interval= '@daily') as dag:
 
     # define tasks
     latest_only = LatestOnlyOperator(task_id='latest_only')

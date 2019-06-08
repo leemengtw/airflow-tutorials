@@ -6,7 +6,6 @@ from airflow.operators.python_operator import PythonOperator
 default_args = {
     'owner': 'Meng Lee',
     'start_date': datetime(2100, 1, 1, 0, 0),
-    'schedule_interval': '@daily',
     'retries': 2,
     'retry_delay': timedelta(minutes=1)
 }
@@ -32,7 +31,7 @@ def fn_superman():
         print("什麼都不幹，工作順利結束")
 
 
-with DAG('comic_app_v1', default_args=default_args) as dag:
+with DAG('comic_app_v1', default_args=default_args, schedule_interval='@daily',) as dag:
     superman_task = PythonOperator(
         task_id='superman_task',
         python_callable=fn_superman

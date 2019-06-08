@@ -8,7 +8,6 @@ from airflow.operators.slack_operator import SlackAPIPostOperator
 default_args = {
     'owner': 'Meng Lee',
     'start_date': datetime(2100, 1, 1, 0, 0),
-    'schedule_interval': '@daily',
     'retries': 2,
     'retry_delay': timedelta(minutes=1)
 }
@@ -44,7 +43,7 @@ def generate_message(**context):
     print("產生要寄給 Slack 的訊息內容並存成檔案")
 
 
-with DAG('comic_app_v2', default_args=default_args) as dag:
+with DAG('comic_app_v2', default_args=default_args, schedule_interval= '@daily') as dag:
 
     get_read_history = PythonOperator(
         task_id='get_read_history',
